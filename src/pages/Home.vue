@@ -4,6 +4,7 @@
       v-if="axiosDone && !error"
       :grid-data="info.data.results"
       :grid-keys="['title', 'director', 'release_date', 'producer']"
+      :grid-head="['Title', 'Director', 'Release date', 'Producer']"
     />
   </div>
 </template>
