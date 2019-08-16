@@ -40,7 +40,7 @@ export default {
     filteredList () {
       return this.tableData.filter((item) => (
         this.gridKeys.some((key) => (
-          (item[key].toLocaleLowerCase().includes(this.searchValue.toLocaleLowerCase())) ? true : null
+          item[key].toLocaleLowerCase().includes(this.searchValue.toLocaleLowerCase())
         ))
       ))
     }
