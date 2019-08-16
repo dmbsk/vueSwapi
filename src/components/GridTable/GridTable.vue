@@ -12,7 +12,7 @@
 
 <script>
 // import GridTableItem from './GridTableItem'
-import GridItem from './grid-item'
+import GridItem from './GridItem'
 export default {
   name: 'GridTable',
   components: { GridItem },
