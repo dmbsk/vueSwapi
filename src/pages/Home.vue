@@ -1,14 +1,25 @@
 <template>
   <div class="center-center">
-    <HelloMessage message="Hello from home!" />
+    <grid-table grid-data="info" />
   </div>
 </template>
 
 <script>
-import HelloMessage from '../components/HelloMessage'
+import GridTable from '../components/GridTable/GridTable'
+import axios from 'axios'
 export default {
   name: 'Home',
-  components: { HelloMessage },
+  components: { GridTable },
+  data () {
+    return {
+      info: null
+    }
+  },
+  mounted () {
+    axios
+      .get(this.$apiLink + 'films')
+      .then(response => (this.info = response))
+  }
 }
 </script>
 
