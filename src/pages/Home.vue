@@ -1,32 +1,40 @@
 <template>
-  <div class="center-center">
-    <grid-table grid-data="info" />
+  <div class="center-center home">
+    <grid-table :grid-data="info" />
   </div>
 </template>
 
 <script>
-import GridTable from '../components/GridTable/GridTable'
 import axios from 'axios'
+import GridTable from '../components/GridTable/GridTable'
 export default {
   name: 'Home',
   components: { GridTable },
   data () {
     return {
-      info: null
+      info: {},
+      error: false
     }
   },
-  mounted () {
+  beforeMount () {
     axios
       .get(this.$apiLink + 'films')
       .then(response => (this.info = response))
+      .catch(error => {
+        console.log(error)
+        this.error = true
+      })
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .center-center {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+    .home {
+      margin-top: 20px;
     }
 </style>

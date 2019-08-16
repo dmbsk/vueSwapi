@@ -1,17 +1,25 @@
 <template>
   <div class="table-grid-body">
-    <GridTableItem />
+    <div
+      v-for="item in gridData.data.results"
+      :key="item"
+      class="table-grid-item-wrapper"
+    >
+      <grid-item :item-data="item" />
+    </div>
   </div>
 </template>
 
 <script>
-import GridTableItem from './GridTableItem'
+// import GridTableItem from './GridTableItem'
+import GridItem from './grid-item'
 export default {
   name: 'GridTable',
-  components: { GridTableItem },
+  components: { GridItem },
+  //  components: { GridTableItem },
   props: {
     gridData: {
-      type: Array,
+      type: Object,
       required: true
     }
   }
@@ -20,6 +28,8 @@ export default {
 
 <style lang="scss" scoped>
     .table-grid-body {
-        display: grid;
+      display: grid;
+      border-bottom: 1px solid black;
     }
+
 </style>
