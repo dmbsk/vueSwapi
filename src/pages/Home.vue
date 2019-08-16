@@ -1,6 +1,10 @@
 <template>
   <div class="center-center home">
-    <grid-table :grid-data="info" />
+    <grid-table
+      v-if="axiosDone && !error"
+      :grid-data="info.data.results"
+      :grid-keys="['title', 'director', 'release_date', 'producer']"
+    />
   </div>
 </template>
 
@@ -13,13 +17,17 @@ export default {
   data () {
     return {
       info: {},
-      error: false
+      error: false,
+      axiosDone: false
     }
   },
   beforeMount () {
     axios
       .get(this.$apiLink + 'films')
-      .then(response => (this.info = response))
+      .then(response => {
+        this.axiosDone = true
+        this.info = response
+      })
       .catch(error => {
         console.log(error)
         this.error = true
