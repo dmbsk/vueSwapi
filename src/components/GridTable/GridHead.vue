@@ -1,5 +1,9 @@
 <template>
-  <div class="grid-table-head-single">
+  <div
+    class="grid-table-head-single"
+    :columnId="columnId"
+    @click="handleClick"
+  >
     <b> {{ headName }} </b>
   </div>
 </template>
@@ -11,6 +15,16 @@ export default {
     headName: {
       type: String,
       required: true
+    },
+    columnId: {
+      type: Number,
+      required: true
+    }
+  },
+  methods: {
+    handleClick (headEvent) {
+      console.log(headEvent)
+      this.$emit('headClick', headEvent)
     }
   }
 }
@@ -24,6 +38,34 @@ export default {
         }
         &:last-of-type {
             border-right: 1px solid black;
+        }
+        b {
+            pointer-events: none;
+            position: relative;
+            &:before {
+                content: '';
+                width: 0;
+                height: 0;
+                position: absolute;
+                left: 110%;
+                top: 50%;
+                transform: translateY(-50%);
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+
+                border-bottom: 5px solid black;
+                transition: opacity .3s, transform .3s .3s;
+                opacity: 0;
+            }
+        }
+        &.sort-asc b:before {
+            opacity: 1;
+            transition: opacity .3s;
+        }
+        &.sort-desc b:before {
+            transform: translateY(-50%) rotateZ(180deg);
+            transition: transform .3s;
+            opacity: 1;
         }
     }
 </style>
