@@ -3,17 +3,22 @@
     <div
       class="grid-table-item-column"
     >
+      {{ itemData.episode_id }}
+    </div>
+    <div
+      class="grid-table-item-column"
+    >
       {{ itemData.title }}
     </div>
     <div
       class="grid-table-item-column"
     >
-      {{ itemData.release_date }}
+      {{ itemData.director }}
     </div>
     <div
       class="grid-table-item-column"
     >
-      {{ itemData.director }}
+      {{ itemData.release_date }}
     </div>
     <div
       class="grid-table-item-column"

@@ -3,8 +3,8 @@
     <grid-table
       v-if="axiosDone && !error"
       :grid-data="info.data.results"
-      :grid-keys="['title', 'director', 'release_date', 'producer']"
-      :grid-head="['Title', 'Director', 'Release date', 'Producer']"
+      :grid-keys="['episode_id', 'title', 'director', 'release_date', 'producer']"
+      :grid-head="['Ep.', 'Title', 'Director', 'Release date', 'Producer']"
     />
   </div>
 </template>
