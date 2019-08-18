@@ -2,7 +2,7 @@
   <div class="table-grid-body">
     <input
       v-model="searchValue"
-      :keyup="filteredList"
+      :keyup="filterList"
     >
     <div class="grid-table-head grid-table-item">
       <grid-head
@@ -14,11 +14,26 @@
       />
     </div>
     <div
-      v-for="item in orderList"
+      v-for="(item, index) in orderList"
       :key="item.episode_id"
       class="table-grid-item-wrapper"
     >
       <grid-item :item-data="item" />
+      <router-link
+        class="table-grid-more"
+        :to="{
+          name: `film`,
+          params: {
+            film: item,
+            title: item.title
+          },
+          query: {
+            id: index + 1
+          }
+        }"
+      >
+        More...
+      </router-link>
     </div>
   </div>
 </template>
@@ -57,11 +72,11 @@ export default {
   },
   computed: {
     orderList () {
-      return _.orderBy(this.filteredList(), this.order.names, this.order.directions)
+      return _.orderBy(this.filterList(), this.order.names, this.order.directions)
     }
   },
   methods: {
-    filteredList () {
+    filterList () {
       return this.tableData.filter((item) => (
         this.gridKeys.some((key) => {
           if (typeof (item[key]) !== 'number') {
@@ -101,6 +116,7 @@ export default {
       display: grid;
       border-bottom: 1px solid black;
       min-width: 500px;
+
       .grid-table-head {
         display: flex;
       }
@@ -110,6 +126,15 @@ export default {
         border-top: 1px solid black;
         &:first-of-type {
           border-left: 1px solid black;
+        }
+      }
+      .table-grid-item-wrapper {
+        position: relative;
+        .table-grid-more {
+          position: absolute;
+          right: -10px;
+          top: 50%;
+          transform: translate(100%, -50%);
         }
       }
     }
