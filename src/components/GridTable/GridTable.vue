@@ -1,10 +1,16 @@
 <template>
-  <div class="table-grid-body">
+  <div
+    v-if="show"
+    class="table-grid-body"
+  >
     <input
       v-model="searchValue"
       :keyup="filterList"
     >
-    <div class="grid-table-head grid-table-item">
+    <div
+      class="grid-table-head grid-table-item"
+      :style="{'grid-template-columns': gridTemplateColumn}"
+    >
       <grid-head
         v-for="(headName, index) in gridHead"
         :key="headName"
@@ -18,11 +24,16 @@
       :key="item.episode_id"
       class="table-grid-item-wrapper"
     >
-      <grid-item :item-data="item" />
+      <grid-item
+        :item-data="item"
+        :grid-keys="gridKeys"
+        :style="{'grid-template-columns': gridTemplateColumn}"
+      />
       <router-link
+        v-if="linkName"
         class="table-grid-more"
         :to="{
-          name: `film`,
+          name: linkName,
           params: {
             film: item,
             title: item.title
@@ -58,12 +69,24 @@ export default {
     gridHead: {
       type: Array,
       required: true
+    },
+    linkName: {
+      type: String,
+      default: null
+    },
+    gridTemplateColumn: {
+      type: String,
+      default: '35px 0.75fr 0.5fr 0.5fr 1fr'
+    },
+    show: {
+      type: Boolean,
+      default: true
     }
   },
   data () {
     return ({
       searchValue: '',
-      tableData: [...this.gridData],
+      tableData: this.gridData,
       order: {
         names: [],
         directions: []
@@ -72,6 +95,14 @@ export default {
   },
   computed: {
     orderList () {
+      // const filteredList = this.filterList()
+      // filteredList.forEach((item, index) => {
+      //   for (const key in item) {
+      //     if (!isNaN(item[key])) {
+      //       filteredList[index][key] = parseInt(item[key])
+      //     }
+      //   }
+      // })
       return _.orderBy(this.filterList(), this.order.names, this.order.directions)
     }
   },
@@ -106,6 +137,8 @@ export default {
           event.target.classList.remove('sort-desc')
         }
       }
+    },
+    transformData () {
     }
   }
 }
@@ -122,7 +155,6 @@ export default {
       }
       .grid-table-item {
         display: grid;
-        grid-template-columns: 35px 0.75fr 0.5fr 0.5fr 1fr;
         border-top: 1px solid black;
         &:first-of-type {
           border-left: 1px solid black;

@@ -42,6 +42,7 @@ export default {
         b {
             pointer-events: none;
             position: relative;
+            word-break: break-all;
             &:before {
                 content: '';
                 width: 0;
