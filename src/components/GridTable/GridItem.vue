@@ -1,29 +1,13 @@
 <template>
   <div class="grid-table-item">
     <div
+      v-for="(key, index) in gridKeys"
+      :key="index"
       class="grid-table-item-column"
     >
-      {{ itemData.episode_id }}
-    </div>
-    <div
-      class="grid-table-item-column"
-    >
-      {{ itemData.title }}
-    </div>
-    <div
-      class="grid-table-item-column"
-    >
-      {{ itemData.director }}
-    </div>
-    <div
-      class="grid-table-item-column"
-    >
-      {{ itemData.release_date }}
-    </div>
-    <div
-      class="grid-table-item-column"
-    >
-      {{ itemData.producer }}
+      <p>
+        {{ itemData[key] }}
+      </p>
     </div>
   </div>
 </template>
@@ -34,6 +18,10 @@ export default {
   props: {
     itemData: {
       type: Object,
+      required: true
+    },
+    gridKeys: {
+      type: Array,
       required: true
     }
   }
@@ -52,6 +40,9 @@ export default {
             }
             &:not(:first-of-type) {
               border-left: 1px solid black;
+            }
+            p {
+              word-break: break-all;
             }
         }
     }

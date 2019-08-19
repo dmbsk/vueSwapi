@@ -5,6 +5,8 @@
       :grid-data="info.data.results"
       :grid-keys="['episode_id', 'title', 'director', 'release_date', 'producer']"
       :grid-head="['Ep.', 'Title', 'Director', 'Release date', 'Producer']"
+      link-name="film"
+      grid-leyout=""
     />
   </div>
 </template>
