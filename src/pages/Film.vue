@@ -53,15 +53,17 @@
       :grid-head="['Name', 'Model', 'Manufacturer', 'Length', 'Class', 'Passengers', 'Max speed', 'Consumables', 'Crew size', 'Cost', 'Capacity']"
       grid-template-column="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr"
     />
+    <comments />
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import GridTable from '../components/GridTable/GridTable'
+import Comments from '../components/Comments/Comments'
 export default {
   name: 'Film',
-  components: { GridTable },
+  components: { Comments, GridTable },
   props: {
     film: {
       type: Object,
