@@ -3,6 +3,20 @@ Simple app that shows data from [SWAPI](https://swapi.co/) in a friendly way.
 <br />
 <br />
 
+## How to use
+#### Search
+Type in search input above data table.
+<br />
+#### Sorting
+Click on data table head (bordered text ex. name) to sort by clicked column values
+
+1 click: sort ascending
+
+2 clicks: sort descending
+
+next click: disables sorting
+<br />
+
 ## Demo
 [Link to demo](https://dmbsk.github.io/vueSwapi_dist/index.html)
 <br />
