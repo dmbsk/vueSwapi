@@ -30,6 +30,9 @@ export default {
 
 <style lang="scss" scoped>
     .grid-table-item {
+      &:last-of-type {
+      border-bottom: 1px solid black;
+    }
         .grid-table-item-column {
             display: flex;
             align-items: center;
@@ -43,6 +46,9 @@ export default {
             }
             p {
               word-break: break-all;
+              @media screen and (max-width: 750px) {
+                font-size: 0.75em;
+              }
             }
         }
     }

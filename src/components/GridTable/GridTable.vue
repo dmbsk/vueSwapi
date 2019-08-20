@@ -3,48 +3,62 @@
     v-if="show"
     class="table-grid-body"
   >
-    <input
-      v-model="searchValue"
-      :keyup="filterList"
-    >
-    <div
-      class="grid-table-head grid-table-item"
-      :style="{'grid-template-columns': gridTemplateColumn}"
-    >
-      <grid-head
-        v-for="(headName, index) in gridHead"
-        :key="headName"
-        :head-name="headName"
-        :column-id="index"
-        @headClick="headWasClicked"
-      />
-    </div>
-    <div
-      v-for="(item, index) in orderList"
-      :key="item.episode_id"
-      class="table-grid-item-wrapper"
-    >
-      <grid-item
-        :item-data="item"
-        :grid-keys="gridKeys"
-        :style="{'grid-template-columns': gridTemplateColumn}"
-      />
-      <router-link
-        v-if="linkName"
-        class="table-grid-more"
-        :to="{
-          name: linkName,
-          params: {
-            film: item,
-            title: item.title
-          },
-          query: {
-            id: index + 1
-          }
-        }"
+    <h2 v-if="tableName">
+      {{ tableName }}
+    </h2>
+    <div class="table-grid-hide">
+      <input
+        v-model="searchValue"
+        :keyup="filterList"
+        placeholder="Search..."
+        @click="toggleShow"
       >
-        More...
-      </router-link>
+      <b
+        v-if="!orderList.length && searchValue"
+        class="table-grid-noResults"
+      >
+        No results :(
+      </b>
+      <div
+        v-if="orderList.length"
+        class="grid-table-head grid-table-item"
+        :style="{'grid-template-columns': gridTemplateColumn}"
+      >
+        <grid-head
+          v-for="(headName, index) in gridHead"
+          :key="headName"
+          :head-name="headName"
+          :column-id="index"
+          @headClick="headWasClicked"
+        />
+      </div>
+      <div
+        v-for="(item, index) in orderList"
+        :key="item.episode_id"
+        class="table-grid-item-wrapper"
+      >
+        <grid-item
+          :item-data="item"
+          :grid-keys="gridKeys"
+          :style="{'grid-template-columns': gridTemplateColumn}"
+        />
+        <router-link
+          v-if="linkName"
+          class="table-grid-more"
+          :to="{
+            name: linkName,
+            params: {
+              film: item,
+              title: item.title
+            },
+            query: {
+              id: index + 1
+            }
+          }"
+        >
+          More...
+        </router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -81,6 +95,10 @@ export default {
     show: {
       type: Boolean,
       default: true
+    },
+    tableName: {
+      type: String,
+      default: ''
     }
   },
   data () {
@@ -138,7 +156,8 @@ export default {
         }
       }
     },
-    transformData () {
+    toggleShow () {
+
     }
   }
 }
@@ -146,27 +165,46 @@ export default {
 
 <style lang="scss" scoped>
     .table-grid-body {
-      display: grid;
-      border-bottom: 1px solid black;
-      min-width: 500px;
-
-      .grid-table-head {
-        display: flex;
-      }
-      .grid-table-item {
+      width: 100%;
+      .table-grid-hide {
         display: grid;
-        border-top: 1px solid black;
-        &:first-of-type {
-          border-left: 1px solid black;
+        input {
+          font-size: 1.5em;
+          padding: 10px;
+          text-align: center;
+          border: 1px solid black;
+          &:focus {
+            outline: none;
+          }
         }
-      }
-      .table-grid-item-wrapper {
-        position: relative;
-        .table-grid-more {
-          position: absolute;
-          right: -10px;
-          top: 50%;
-          transform: translate(100%, -50%);
+        @media screen and (max-width: 750px){
+          min-width: calc(100% - 10px);
+          margin: 10px;
+        }
+        .table-grid-noResults {
+          font-size: 3em;
+          text-align: center;
+          margin: 70px 0;
+        }
+        .grid-table-head {
+          display: flex;
+          border-bottom: 1px solid black;
+          border-top: 1px solid black;
+        }
+        .grid-table-item {
+          display: grid;
+          &:first-of-type {
+            border-left: 1px solid black;
+          }
+        }
+        .table-grid-item-wrapper {
+          position: relative;
+          .table-grid-more {
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translate(100%, -50%);
+          }
         }
       }
     }

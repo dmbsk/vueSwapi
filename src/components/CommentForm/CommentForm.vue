@@ -1,7 +1,7 @@
 <template>
   <form
-    @submit.prevent="addComment"
     method="get"
+    @submit.prevent="addComment"
   >
     <div class="comment-name">
       <label
@@ -32,21 +32,21 @@
     <div class="comment-rating">
       <p> Rating: </p>
       <div
-        v-for="index in (0, 10)"
+        v-for="index in 11"
         :key="index"
         class="comment-rating-radio"
       >
         <label
           for="comment-rating-radio"
         >
-          {{ index }}
+          {{ index - 1 }}
         </label>
         <input
           id="comment-rating-radio"
           v-model="comment.rating"
           type="radio"
           name="comment-rating-radio"
-          :value="index"
+          :value="index - 1"
           required
         >
       </div>
@@ -76,6 +76,7 @@ export default {
   methods: {
     addComment () {
       this.comment.date = Date.now()
+      console.log('wat')
       CommentStore.methods.addComment(this.$route.query.id, this.comment)
     }
   }
@@ -88,8 +89,34 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        width: 75%;
+        @media screen and (max-width: 750px) {
+            width: 100%;
+        }
+        input:not([type='radio']), textarea {
+            border: 1px solid black;
+            font-size: 1.2em;
+            padding: 10px;
+            &:focus {
+                outline: none;
+            }
+            width: calc(100% - 22px);
+            &[type='submit'] {
+                width: 50%;
+            }
+            @media screen and (max-width: 750px) {
+                width: calc(100% - 20px);
+            }
+        }
+        textarea {
+            resize: vertical
+        }
         div {
             margin: 20px 10px;
+            width: 50%;
+            @media screen and (max-width: 750px) {
+                width: calc(100% - 40px);
+            }
         }
         label {
             display: flex;
