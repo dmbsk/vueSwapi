@@ -21,7 +21,7 @@
       </div>
     </div>
     <grid-table
-      v-if="additionalInfo.characters"
+      v-if="additionalInfo.characters.length"
       :grid-data="additionalInfo.characters"
       :grid-keys="['name', 'height', 'mass', 'hair_color', 'skin_color', 'eye_color', 'birth_year', 'gender' ]"
       :grid-head="['Name', 'Height', 'Mass', 'Hair', 'Skin', 'Eye', 'Birth', 'Gender' ]"
@@ -30,7 +30,7 @@
       class="grid-table"
     />
     <grid-table
-      v-if="additionalInfo.planets"
+      v-if="additionalInfo.planets.length"
       :grid-data="additionalInfo.planets"
       :grid-keys="['name', 'climate', 'diameter', 'gravity', 'orbital_period', 'rotation_period','population', 'surface_water' , 'terrain']"
       :grid-head="['Name', 'Climate', 'Diameter', 'Gravity', 'Orbital p.', 'Rotation p.', 'Population', 'Surface water', 'Terrain' ]"
@@ -39,7 +39,7 @@
       class="grid-table"
     />
     <grid-table
-      v-if="additionalInfo.species"
+      v-if="additionalInfo.species.length"
       :grid-data="additionalInfo.species"
       :grid-keys="['name', 'classification', 'designation','average_lifespan', 'language', 'average_height', 'eye_colors', 'hair_colors', 'skin_colors']"
       :grid-head="['Name', 'Class.', 'Designation', 'Avg. lifespan', 'Language', 'Avg. height', 'Eye', 'Hair', 'Skin']"
@@ -48,7 +48,7 @@
       class="grid-table"
     />
     <grid-table
-      v-if="additionalInfo.starships"
+      v-if="additionalInfo.starships.length"
       :grid-data="additionalInfo.starships"
       :grid-keys="['name', 'model', 'manufacturer', 'length', 'starship_class', 'passengers', 'max_atmosphering_speed', 'hyperdrive_rating', 'crew', 'cost_in_credits', 'cargo_capacity', 'MGLT']"
       :grid-head="['Name', 'Model', 'Manufacturer', 'Length', 'Class', 'Passengers', 'Max speed', 'Hyperdrive', 'Crew size', 'Cost', 'Capacity', 'MGLT']"
@@ -57,7 +57,7 @@
       class="grid-table"
     />
     <grid-table
-      v-if="additionalInfo.vehicles"
+      v-if="additionalInfo.vehicles.length"
       :grid-data="additionalInfo.vehicles"
       :grid-keys="['name', 'model', 'manufacturer', 'length', 'vehicle_class', 'passengers', 'max_atmosphering_speed', 'consumables', 'crew', 'cost_in_credits', 'cargo_capacity']"
       :grid-head="['Name', 'Model', 'Manufacturer', 'Length', 'Class', 'Passengers', 'Max speed', 'Consumables', 'Crew size', 'Cost', 'Capacity']"
