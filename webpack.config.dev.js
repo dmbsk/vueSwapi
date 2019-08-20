@@ -59,11 +59,6 @@ module.exports = {
       filename: 'index.html',
       template: 'index.html',
       inject: true
-    }),
-    new CopyWebpackPlugin([{
-      from: resolve('static/img'),
-      to: resolve('dist/static/img'),
-      toType: 'dir'
-    }])
+    })
   ]
 };
