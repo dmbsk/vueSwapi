@@ -52,7 +52,9 @@ const CommentStore = {
       CommentStore.data.comments[filmId].push(comment)
     },
     addKey (filmId) {
-      CommentStore.data.comments[filmId] = []
+      if (CommentStore.data.comments[filmId].length) {
+        CommentStore.data.comments[filmId] = []
+      }
     }
   }
 }

@@ -42,7 +42,8 @@ export default {
       return _.orderBy(this.comments, 'date', 'desc').splice(0, this.commentsAmount)
     }
   },
-  beforeCreate () {
+  created () {
+    console.log(CommentStore.data)
     CommentStore.methods.addKey(this.$route.query.id)
   },
   methods: {
