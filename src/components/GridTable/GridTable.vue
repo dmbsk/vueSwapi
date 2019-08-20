@@ -2,16 +2,22 @@
   <div
     v-if="show"
     class="table-grid-body"
+    :class="{active: isActive}"
   >
-    <h2 v-if="tableName">
+    <h2
+      v-if="tableName"
+      @click="toggleShow"
+    >
       {{ tableName }}
     </h2>
-    <div class="table-grid-hide">
+    <div
+      :class="{active: isActive}"
+      class="table-grid-hide"
+    >
       <input
         v-model="searchValue"
         :keyup="filterList"
         placeholder="Search..."
-        @click="toggleShow"
       >
       <b
         v-if="!orderList.length && searchValue"
@@ -108,7 +114,8 @@ export default {
       order: {
         names: [],
         directions: []
-      }
+      },
+      isActive: true
     })
   },
   computed: {
@@ -157,7 +164,7 @@ export default {
       }
     },
     toggleShow () {
-
+      this.isActive = !this.isActive
     }
   }
 }
@@ -166,8 +173,18 @@ export default {
 <style lang="scss" scoped>
     .table-grid-body {
       width: 100%;
+      h2:hover {
+        cursor: pointer;
+      }
       .table-grid-hide {
-        display: grid;
+        &.active {
+          display: grid;
+          transform: scaleY(1);
+        }
+        transform: scaleY(0);
+        display: none;
+        transform-origin: top;
+        transition: transform .3s, display 0s linear .3s;
         input {
           font-size: 1.5em;
           padding: 10px;

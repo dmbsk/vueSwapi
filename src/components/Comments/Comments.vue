@@ -46,7 +46,6 @@ export default {
   },
   beforeCreate () {
     CommentStore.methods.addKey(this.$route.query.id)
-    console.log(CommentStore.data.comments[this.$route.query.id])
   },
   methods: {
     increaseCommentsAmount () {

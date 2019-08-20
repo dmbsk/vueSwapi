@@ -103,7 +103,6 @@ export default {
   computed: {
     calculatedDateDifference () {
       const releaseTimestamp = new Date(Date.parse(this.filmData.release_date))
-      console.log(releaseTimestamp)
       const difference = new Date().getFullYear() - releaseTimestamp.getFullYear()
       return difference
     }
