@@ -50,6 +50,9 @@ const CommentStore = {
   methods: {
     addComment (filmId, comment) {
       CommentStore.data.comments[filmId].push(comment)
+    },
+    addKey (filmId) {
+      CommentStore.data.comments[filmId] = []
     }
   }
 }

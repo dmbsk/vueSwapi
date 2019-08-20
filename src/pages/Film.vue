@@ -53,7 +53,10 @@
       :grid-head="['Name', 'Model', 'Manufacturer', 'Length', 'Class', 'Passengers', 'Max speed', 'Consumables', 'Crew size', 'Cost', 'Capacity']"
       grid-template-column="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr"
     />
-    <comments />
+    <div class="comments">
+      <comment-form />
+      <comments />
+    </div>
   </div>
 </template>
 
@@ -61,9 +64,10 @@
 import axios from 'axios'
 import GridTable from '../components/GridTable/GridTable'
 import Comments from '../components/Comments/Comments'
+import CommentForm from '../components/CommentForm/CommentForm'
 export default {
   name: 'Film',
-  components: { Comments, GridTable },
+  components: { CommentForm, Comments, GridTable },
   props: {
     film: {
       type: Object,
@@ -140,6 +144,13 @@ export default {
       &:not(.flex) > p {
         margin-left: 10px;
       }
+    }
+    .comments {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: 0 auto;
+      max-width: 50%;
     }
   }
 </style>
