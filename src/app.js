@@ -8,6 +8,7 @@ Vue.prototype.$apiLink = 'https://swapi.co/api/'
 
 new Vue({
   router,
-  Vuex,
   render: h => h(App)
 }).$mount('#app')
+
+Vue.use(Vuex)

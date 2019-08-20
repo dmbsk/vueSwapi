@@ -13,7 +13,14 @@
         placeholder="Search..."
         @click="toggleShow"
       >
+      <b
+        v-if="!orderList.length && searchValue"
+        class="table-grid-noResults"
+      >
+        No results :(
+      </b>
       <div
+        v-if="orderList.length"
         class="grid-table-head grid-table-item"
         :style="{'grid-template-columns': gridTemplateColumn}"
       >
@@ -158,27 +165,34 @@ export default {
 
 <style lang="scss" scoped>
     .table-grid-body {
-      border-bottom: 1px solid black;
-      min-width: 600px;
       width: 100%;
       .table-grid-hide {
         display: grid;
         input {
-          border: 1px solid black;
           font-size: 1.5em;
           padding: 10px;
           text-align: center;
+          border: 1px solid black;
+          &:focus {
+            outline: none;
+          }
         }
         @media screen and (max-width: 750px){
           min-width: calc(100% - 10px);
           margin: 10px;
         }
+        .table-grid-noResults {
+          font-size: 3em;
+          text-align: center;
+          margin: 70px 0;
+        }
         .grid-table-head {
           display: flex;
+          border-bottom: 1px solid black;
+          border-top: 1px solid black;
         }
         .grid-table-item {
           display: grid;
-          border-top: 1px solid black;
           &:first-of-type {
             border-left: 1px solid black;
           }

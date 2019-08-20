@@ -1,12 +1,14 @@
 <template>
   <div
-    class="comments-list"
+    class="comments-wrapper"
   >
-    <single-comment
-      v-for="comment in showComments"
-      :key="comment.id"
-      :comment="comment"
-    />
+    <div class="comments-list">
+      <single-comment
+        v-for="comment in showComments"
+        :key="comment.id"
+        :comment="comment"
+      />
+    </div>
     <button
       v-if="comments.length > commentsAmount"
       class="comments-load-more"
@@ -44,6 +46,7 @@ export default {
   },
   beforeCreate () {
     CommentStore.methods.addKey(this.$route.query.id)
+    console.log(CommentStore.data.comments[this.$route.query.id])
   },
   methods: {
     increaseCommentsAmount () {
@@ -58,20 +61,29 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .comments-list {
+  .comments-wrapper {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    width: 100%;
-    margin: 0;
+    .comments-list {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+      width: 100%;
+      margin: 0;
+      @media screen and (max-width: 660px) {
+        flex-wrap: nowrap;
+        flex-direction: column;
+      }
+    }
     button, .comments-load-more {
       font-size: 20px;
       padding: 10px;
       border: 1px solid black;
       color: black;
       background-color: white;
-      margin: 30px 0;
+      margin: 30px auto;
       &:focus {
         outline: none;
       }

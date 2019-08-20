@@ -49,10 +49,13 @@ const CommentStore = {
   },
   methods: {
     addComment (filmId, comment) {
-      CommentStore.data.comments[filmId].push(comment)
+      CommentStore.data.comments[filmId].push({ ...comment })
     },
     addKey (filmId) {
-      CommentStore.data.comments[filmId] = []
+      if (!(filmId in CommentStore.data.comments)) {
+        CommentStore.data.comments[filmId] = []
+        console.log(CommentStore.data.comments[filmId])
+      }
     }
   }
 }

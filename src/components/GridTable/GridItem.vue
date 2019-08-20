@@ -30,6 +30,9 @@ export default {
 
 <style lang="scss" scoped>
     .grid-table-item {
+      &:last-of-type {
+      border-bottom: 1px solid black;
+    }
         .grid-table-item-column {
             display: flex;
             align-items: center;
