@@ -9,6 +9,9 @@
       link-name="film"
       grid-template-column="0.15fr 0.8fr 0.5fr 0.5fr 1fr"
     />
+    <h2 v-if="!axiosDone && !error">
+      Loading...
+    </h2>
   </div>
 </template>
 
@@ -25,7 +28,7 @@ export default {
       axiosDone: false
     }
   },
-  beforeMount () {
+  mounted () {
     axios
       .get(this.$apiLink + 'films')
       .then(response => {
