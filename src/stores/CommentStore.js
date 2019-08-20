@@ -54,7 +54,6 @@ const CommentStore = {
     addKey (filmId) {
       if (!(filmId in CommentStore.data.comments)) {
         CommentStore.data.comments[filmId] = []
-        console.log(CommentStore.data.comments[filmId])
       }
     }
   }

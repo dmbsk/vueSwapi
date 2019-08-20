@@ -23,7 +23,6 @@ export default {
   },
   methods: {
     handleClick (headEvent) {
-      console.log(headEvent)
       this.$emit('headClick', headEvent)
     }
   }
