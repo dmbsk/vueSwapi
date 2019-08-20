@@ -23,4 +23,5 @@ lint fix files:  `npm run lint:fix` (fix simple linting)
 ###To do
 1. Add [Webpack manifest](https://www.npmjs.com/package/webpack-assets-manifest)
 2. Add props [custom validators](https://vuejs.org/v2/guide/components-props.html#Prop-Validation) to object and arrays
+3. More tests...
 <br />
