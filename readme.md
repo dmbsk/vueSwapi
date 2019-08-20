@@ -13,7 +13,6 @@ Simple app that shows data from [SWAPI](https://swapi.co/) in a friendly way.
 3. Start app `npm run dev`
 <br />
 
- 
 ## Run scripts
 Run: `npm run dev` (starts dev server)
 
