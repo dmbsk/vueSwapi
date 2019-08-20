@@ -76,7 +76,6 @@ export default {
   methods: {
     addComment () {
       this.comment.date = Date.now()
-      console.log('wat')
       CommentStore.methods.addComment(this.$route.query.id, this.comment)
     }
   }
