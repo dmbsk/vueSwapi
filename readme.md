@@ -3,6 +3,10 @@ Simple app that shows data from [SWAPI](https://swapi.co/) in a friendly way.
 <br />
 <br />
 
+## Demo
+[Link to demo](https://dmbsk.github.io/vueSwapi_dist/index.html)
+<br />
+
 ## How to run
 1. Clone repo
 2. Install dependencies `npm install` or `yarn install`
