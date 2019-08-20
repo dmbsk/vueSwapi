@@ -1,7 +1,7 @@
 <template>
   <form
-    @submit.prevent="addComment"
     method="get"
+    @submit.prevent="addComment"
   >
     <div class="comment-name">
       <label
@@ -88,8 +88,18 @@ export default {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        input:not([type='radio']), textarea {
+            border: 1px solid black;
+            font-size: 1.2em;
+            padding: 10px;
+            &:focus {
+                outline: none;
+            }
+            width: calc(100% - 22px);
+        }
         div {
             margin: 20px 10px;
+            width: calc(50%);
         }
         label {
             display: flex;

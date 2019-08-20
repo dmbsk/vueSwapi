@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="film-wrapper center-center">
     <div v-if="(film || filmData) && !error">
       <h1>{{ filmData.title }}</h1>
       <div class="flex">
@@ -24,6 +24,8 @@
       :grid-keys="['name', 'height', 'mass', 'hair_color', 'skin_color', 'eye_color', 'birth_year', 'gender' ]"
       :grid-head="['Name', 'Height', 'Mass', 'Hair', 'Skin', 'Eye', 'Birth', 'Gender' ]"
       grid-template-column="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr"
+      table-name="Characters"
+      class="grid-table"
     />
     <grid-table
       v-if="additionalInfo.planets"
@@ -31,6 +33,8 @@
       :grid-keys="['name', 'climate', 'diameter', 'gravity', 'orbital_period', 'rotation_period','population', 'surface_water' , 'terrain']"
       :grid-head="['Name', 'Climate', 'Diameter', 'Gravity', 'Orbital p.', 'Rotation p.', 'Population', 'Surface water', 'Terrain' ]"
       grid-template-column="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr"
+      table-name="Planets"
+      class="grid-table"
     />
     <grid-table
       v-if="additionalInfo.species"
@@ -38,6 +42,8 @@
       :grid-keys="['name', 'classification', 'designation','average_lifespan', 'language', 'average_height', 'eye_colors', 'hair_colors', 'skin_colors']"
       :grid-head="['Name', 'Class.', 'Designation', 'Avg. lifespan', 'Language', 'Avg. height', 'Eye', 'Hair', 'Skin']"
       grid-template-column="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr"
+      table-name="Species"
+      class="grid-table"
     />
     <grid-table
       v-if="additionalInfo.starships"
@@ -45,6 +51,8 @@
       :grid-keys="['name', 'model', 'manufacturer', 'length', 'starship_class', 'passengers', 'max_atmosphering_speed', 'hyperdrive_rating', 'crew', 'cost_in_credits', 'cargo_capacity', 'MGLT']"
       :grid-head="['Name', 'Model', 'Manufacturer', 'Length', 'Class', 'Passengers', 'Max speed', 'Hyperdrive', 'Crew size', 'Cost', 'Capacity', 'MGLT']"
       grid-template-column="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr"
+      table-name="Starships"
+      class="grid-table"
     />
     <grid-table
       v-if="additionalInfo.vehicles"
@@ -52,6 +60,8 @@
       :grid-keys="['name', 'model', 'manufacturer', 'length', 'vehicle_class', 'passengers', 'max_atmosphering_speed', 'consumables', 'crew', 'cost_in_credits', 'cargo_capacity']"
       :grid-head="['Name', 'Model', 'Manufacturer', 'Length', 'Class', 'Passengers', 'Max speed', 'Consumables', 'Crew size', 'Cost', 'Capacity']"
       grid-template-column="1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr"
+      table-name="Vehicles"
+      class="grid-table"
     />
     <div class="comments">
       <comment-form />
@@ -139,18 +149,23 @@ export default {
   div {
     max-width: 1400px;
     margin: 0 auto;
+    flex-direction: column;
     div {
       margin: 5px 10px 0 5px;
       &:not(.flex) > p {
         margin-left: 10px;
       }
     }
+    .grid-table {
+      margin-top: 20px;
+    }
     .comments {
       display: flex;
       justify-content: center;
       flex-direction: column;
       margin: 0 auto;
-      max-width: 50%;
+      min-width: 60%;
+      max-width: 90%;
     }
   }
 </style>

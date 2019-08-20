@@ -31,7 +31,7 @@ export default {
 <style lang="scss" scoped>
     .comment-single {
         margin: 20px;
-        width: 43%;
+        width: calc(50% - 40px);
         p {
             margin: 0 10px;
             &.comment-single-rating {

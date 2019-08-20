@@ -61,17 +61,22 @@ export default {
   .comments-list {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
     width: 100%;
+    margin: 0;
     button, .comments-load-more {
       font-size: 20px;
       padding: 10px;
       border: 1px solid black;
       color: black;
       background-color: white;
-      width: 100%;
-      margin-bottom: 30px;
+      margin: 30px 0;
       &:focus {
         outline: none;
+      }
+      &:not(button){
+        border: none;
       }
     }
     .comments-loaded {

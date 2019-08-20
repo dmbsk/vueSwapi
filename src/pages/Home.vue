@@ -1,5 +1,5 @@
 <template>
-  <div class="center-center home">
+  <div class="home">
     <grid-table
       v-if="axiosDone && !error"
       :grid-data="info.data.results"
@@ -47,5 +47,16 @@ export default {
     }
     .home {
       margin-top: 20px;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @media screen and (max-width: 750px) {
+        justify-content: left;
+        .table-grid-body {
+          min-width: 90%;
+          margin: 5px;
+        }
+      }
     }
 </style>

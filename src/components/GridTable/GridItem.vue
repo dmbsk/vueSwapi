@@ -43,6 +43,9 @@ export default {
             }
             p {
               word-break: break-all;
+              @media screen and (max-width: 750px) {
+                font-size: 0.75em;
+              }
             }
         }
     }
